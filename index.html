@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Event Handling</title>
+  <style>
+    .button { padding: 10px; margin: 10px; cursor: pointer; background-color: #007BFF; color: white; border: none; }
+    .box { width: 100px; height: 100px; background-color: lightcoral; margin: 10px; }
+    #log { margin-top: 20px; }
+  </style>
+</head>
+<body>
+
+  <h1>JavaScript Event Handling</h1>
+
+  <!-- Button Click Event -->
+  <button class="button" id="clickButton">Click Me</button>
+
+  <!-- Mouseover and Mouseout Events -->
+  <div class="box" id="hoverBox"></div>
+
+  <!-- Keydown Event -->
+  <input type="text" id="textInput" placeholder="Type something...">
+
+  <!-- Input Event -->
+  <input type="text" id="inputField" placeholder="Type here and see changes below">
+  <p id="inputResult"></p>
+
+  <!-- Logs -->
+  <div id="log"></div>
+
+  <script>
+    // 1. Click Event
+    const clickButton = document.getElementById('clickButton');
+    clickButton.addEventListener('click', () => {
+      const log = document.getElementById('log');
+      log.innerHTML += '<p>Button was clicked!</p>';
+    });
+
+    // 2. Mouseover and Mouseout Events
+    const hoverBox = document.getElementById('hoverBox');
+    hoverBox.addEventListener('mouseover', () => {
+      hoverBox.style.backgroundColor = 'lightgreen';
+      document.getElementById('log').innerHTML += '<p>Mouse is over the box!</p>';
+    });
+
+    hoverBox.addEventListener('mouseout', () => {
+      hoverBox.style.backgroundColor = 'lightcoral';
+      document.getElementById('log').innerHTML += '<p>Mouse left the box!</p>';
+    });
+
+    // 3. Keydown Event
+    const textInput = document.getElementById('textInput');
+    textInput.addEventListener('keydown', (event) => {
+      document.getElementById('log').innerHTML += `<p>Key "${event.key}" was pressed in the text input field!</p>`;
+    });
+
+    // 4. Input Event
+    const inputField = document.getElementById('inputField');
+    const inputResult = document.getElementById('inputResult');
+    inputField.addEventListener('input', (event) => {
+      inputResult.textContent = `Current input value: ${event.target.value}`;
+    });
+
+  </script>
+
+</body>
+</html>
